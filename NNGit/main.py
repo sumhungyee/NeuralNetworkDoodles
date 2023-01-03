@@ -10,18 +10,7 @@ pictures = getfile()
 
 gridlist = list(map(lambda pic: np.array(convert(pic.grid)).flatten(), pictures))
 expected = list(map(lambda pic: EXPECTED[CONVERSION[pic.classification]], pictures))
-
-
 network.mass_train(gridlist, expected, LEARNRATE)
-
-
-
-
-
-
-
-
-
 
 ######
 ######

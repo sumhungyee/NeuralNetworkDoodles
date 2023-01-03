@@ -66,31 +66,36 @@ class Network:
         return cost
 
     def mass_train(self, datapoints, expected, learn_rate):
+        pt.style.use('ggplot')
         deviation_list = []
         x = []
-        def plot_and_train(i, x, deviation_list):
-            pt.style.use('ggplot')
+        fig, ax = pt.subplots()
+        fig.suptitle("Error Reduction")
+        
             
-            for i in range(len(datapoints)):
+            
+            
+        for i in range(len(datapoints)):
                 #### TRAINING ####
-                deviation_list.append(self.train(datapoints[i], expected[i], learn_rate))
+            deviation_list.append(self.train(datapoints[i], expected[i], learn_rate))
                 ##################
+                #### DATA ########
+            x.append(i + 1)
+                ##################
+            ax.set(xlabel = "Number of Inputs", ylabel = "Error-Rate")
+            pt.cla()
+            ax.plot(x, deviation_list)
                 
-                x.append(i + 1)
-                pt.cla()
-                pt.plot(x, deviation_list)
-                pt.xlabel("Number of Inputs")
-                pt.ylabel("Error-Rate")
-                if len(x) >= 20:
-                    x = x[::2]
-                    deviation_list = deviation_list[::2]
+            fig.canvas.draw()
+                
+            pt.pause(0.00001)
         
-        ani = FuncAnimation(pt.gcf(), lambda a: plot_and_train(a, x, deviation_list), interval=100)
-        pt.tight_layout()
-        pt.legend(loc='best')
-        pt.show(block = False)
         
-        pt.pause(10)
+       
+        
+        
+        
+        pt.pause(1)
         pt.close()
 
 

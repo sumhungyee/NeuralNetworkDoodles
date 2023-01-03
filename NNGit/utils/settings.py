@@ -50,10 +50,8 @@ class Picture:
     def __str__(self):
         return self.classification
 
-### MPL
-pt.style.use('ggplot')
-pt.xlabel("Number of Inputs", fontsize=10)
-pt.ylabel("Error-Rate", fontsize= 10)
+
+
 
 
 ### MISC
