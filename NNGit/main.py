@@ -10,7 +10,11 @@ pictures = getfile()
 
 gridlist = list(map(lambda pic: np.array(convert(pic.grid)).flatten(), pictures))
 expected = list(map(lambda pic: EXPECTED[CONVERSION[pic.classification]], pictures))
-network.mass_train(gridlist, expected, LEARNRATE)
+pairs = list(zip(gridlist, expected))
+shuffle(pairs)
+gridlist_shuffled, expected_shuffled = zip(*pairs)
+
+network.mass_train(list(gridlist_shuffled), list(expected_shuffled), LEARNRATE)
 
 ######
 ######
