@@ -11,6 +11,6 @@ Doodles will be fed into the network upon running `main.py`. A real-time animate
 
 # Testing
 After training, the program will prompt the user to draw a doodle. Simply pick a shape out of: Circle, Triangle, Cross and line. The network will then guess the shape you have chosen to doodle.
-![image](https://user-images.githubusercontent.com/113227987/210310186-1f681bc0-7dd7-4e21-885d-5e0385eab50b.png)
 
 As mentioned, hold the left mouse button to paint, right click to erase, and middle click to process the doodle.
+![image](https://user-images.githubusercontent.com/113227987/210310186-1f681bc0-7dd7-4e21-885d-5e0385eab50b.png)
