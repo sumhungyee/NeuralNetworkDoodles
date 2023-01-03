@@ -40,7 +40,7 @@ WEIGHT_RNG = lambda: uniform(-0.5, 0.5)
 CONVERSION = {"cross": 0, "circle": 1, "triangle":2, "line":3}
 SHAPES = dict(map(lambda x: (x[1],x[0]), CONVERSION.items()))
 EXPECTED = {0: [1,0,0,0], 1:[0,1,0,0], 2:[0,0,1,0], 3:[0,0,0,1]}
-LEARNRATE = 0.3
+LEARNRATE = 0.25
 ###
 
 class Picture:
