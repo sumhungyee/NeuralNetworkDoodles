@@ -5,7 +5,7 @@ from utils import *
 
 
 
-network = Network(ROWS * COLS, 10, 4)
+network = Network(ROWS * COLS, 100, 20, 4)
 pictures = getfile()
 
 gridlist = list(map(lambda pic: np.array(convert(pic.grid)).flatten(), pictures))
@@ -110,6 +110,12 @@ if exit_via_1:
     feed = list(network.forward_prop(data))
 
     print(f"Oh! This is a {SHAPES[feed.index(max(feed))]}!")
+    print(f"""
+    {SHAPES[0]} - {round(feed[0]/sum(feed) * 100, 2)}%
+    {SHAPES[1]} - {round(feed[1]/sum(feed) * 100, 2)}%
+    {SHAPES[2]} - {round(feed[2]/sum(feed) * 100, 2)}%
+    {SHAPES[3]} - {round(feed[3]/sum(feed) * 100, 2)}%
+    """)
     correct = input("Was I right? (Y/N) ")
 
     store = True
