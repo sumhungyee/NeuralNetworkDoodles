@@ -8,7 +8,7 @@ A mini-neural network project which involves building a neural network from the 
 # Training
 Doodles will be fed into the network upon running `main.py`. A real-time animated graph will be plotted to test and measure the effectiveness of the neural network through deviations from the "correct" answers. 
 
-![image](https://user-images.githubusercontent.com/113227987/210310375-00f79568-b7d2-4c1f-be42-0efe9e2b31b3.png)
+![image](https://user-images.githubusercontent.com/113227987/210917971-2d9bdfdb-6bf6-48b0-afca-d222c5b516d3.png)
 
 # Testing
 After training, the program will prompt the user to draw a doodle. Simply pick a shape out of: Circle, Triangle, Cross and line. The network will then guess the shape you have chosen to doodle.
