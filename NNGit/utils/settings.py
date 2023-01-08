@@ -50,10 +50,6 @@ class Picture:
     def __str__(self):
         return self.classification
 
-
-
-
-
 ### MISC
 def convert(grid):
     return list(map(lambda y: list(map(lambda x: 1 - sum(x)/(3*255), y)), grid)) 

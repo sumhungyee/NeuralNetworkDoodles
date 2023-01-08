@@ -111,10 +111,10 @@ if exit_via_1:
 
     print(f"Oh! This is a {SHAPES[feed.index(max(feed))]}!")
     print(f"""
-    {SHAPES[0]} - {round(feed[0]/sum(feed) * 100, 2)}%
-    {SHAPES[1]} - {round(feed[1]/sum(feed) * 100, 2)}%
-    {SHAPES[2]} - {round(feed[2]/sum(feed) * 100, 2)}%
-    {SHAPES[3]} - {round(feed[3]/sum(feed) * 100, 2)}%
+    {SHAPES[0]} - {round(np.exp(feed[0])/sum(np.exp(feed)) * 100, 2)}%
+    {SHAPES[1]} - {round(np.exp(feed[1])/sum(np.exp(feed)) * 100, 2)}%
+    {SHAPES[2]} - {round(np.exp(feed[2])/sum(np.exp(feed)) * 100, 2)}%
+    {SHAPES[3]} - {round(np.exp(feed[3])/sum(np.exp(feed)) * 100, 2)}%
     """)
     correct = input("Was I right? (Y/N) ")
 

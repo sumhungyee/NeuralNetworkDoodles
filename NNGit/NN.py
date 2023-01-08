@@ -58,7 +58,7 @@ class Network:
         cost = sum(list(error))
         for l in range(1, len(self.layer_sizes)):
             layer = self.layers[-l]
-            change_biases = learn_rate * error * ACTIVATION_DERIVATIVE(layer.out_a)
+            change_biases = learn_rate * error * ACTIVATION_DERIVATIVE(layer.out_a) 
             change_weights = layer.in_a[np.newaxis].T.dot(change_biases[np.newaxis])     
             error = layer.weights.T.dot(error)
             layer.weights += change_weights.T
