@@ -53,7 +53,6 @@ class Network:
         expected_outputs = np.array(expected_outputs)
         outputs = self.forward_prop(data)
  
-
         error = self.cost_derivative(outputs, expected_outputs) 
         err = sum(list(error))
         for l in range(1, len(self.layer_sizes)):
