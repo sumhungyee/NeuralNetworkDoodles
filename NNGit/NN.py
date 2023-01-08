@@ -37,7 +37,7 @@ class Network:
             i in range(len(self.layer_sizes) - 1)]
         self.output_layer = self.layers[-1]
 
-    def cost(self, output_value, expected_value):
+    def cost_derivative(self, output_value, expected_value):
         return (expected_value - output_value) 
     
     def forward_prop(self, input):
@@ -54,23 +54,24 @@ class Network:
         outputs = self.forward_prop(data)
  
 
-        error = self.cost(outputs, expected_outputs) 
-        cost = sum(list(error))
+        error = self.cost_derivative(outputs, expected_outputs) 
+        err = sum(list(error))
         for l in range(1, len(self.layer_sizes)):
             layer = self.layers[-l]
             change_biases = learn_rate * error * ACTIVATION_DERIVATIVE(layer.out_a) 
             change_weights = layer.in_a[np.newaxis].T.dot(change_biases[np.newaxis])     
             error = layer.weights.T.dot(error)
-            layer.weights += change_weights.T
-            layer.biases += change_biases
-        return cost
+            layer.weights += change_weights.T 
+            layer.biases += change_biases 
+        return err
 
     def mass_train(self, datapoints, expected, learn_rate):
         pt.style.use('ggplot')
         deviation_list = []
         x = []
         fig, ax = pt.subplots()
-        fig.suptitle("Error Reduction")
+        fig.suptitle("Error Rate")
+        ax.set(xlabel = "Number of Inputs", ylabel = "Error-Rate")
         
             
             
