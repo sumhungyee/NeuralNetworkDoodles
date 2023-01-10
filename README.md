@@ -15,6 +15,7 @@ After training, the program will prompt the user to draw a doodle. Simply pick a
 As mentioned, hold the left mouse button to paint, right click to erase, and middle click to process the doodle.
 
 ![image](https://user-images.githubusercontent.com/113227987/210310186-1f681bc0-7dd7-4e21-885d-5e0385eab50b.png)
+
 After drawing, the doodle will be fed forward through the network and a corresponding guess of the user's doodle will be produced.
 
 # Technical details
