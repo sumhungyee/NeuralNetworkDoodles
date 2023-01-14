@@ -5,7 +5,7 @@ from utils import *
 
 
 
-network = Network(ROWS * COLS, 100, 20, 4)
+network = Network(ROWS * COLS, ROWS * COLS // 4, 100, 50, 4)
 pictures = getfile()
 
 gridlist = list(map(lambda pic: np.array(convert(pic.grid)).flatten(), pictures))

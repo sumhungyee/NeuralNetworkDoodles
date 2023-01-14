@@ -82,7 +82,10 @@ class Network:
                 #### DATA ########
             x.append(i + 1)
                 ##################
-            ax.set(xlabel = "Number of Inputs", ylabel = "Error-Rate")
+
+            ax.set_xlabel("Number of Inputs")
+            ax.set_ylabel("Error-Rate")
+            
             pt.cla()
             ax.plot(x, deviation_list)
                 
