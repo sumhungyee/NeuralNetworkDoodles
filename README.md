@@ -22,7 +22,7 @@ After drawing, the doodle will be fed forward through the network and a correspo
 
 ## Modelling of the Network
 
-To create the neural network, NumPy and base Python are used. The Network is modelled as a class which contains layers, which are themselves instances of the class Layer. Each layer initially stores an array of weights and biases from the previous layer to the current layer. During the feed-forward process, the incoming activation/input values, as well as the output activation values and z-values (pre-activation) are also stored in each layer as NumPy arrays. To avoid overflow errors and extremely large activation values which arise from the huge input size, the Sigmoid activation function is chosen over ReLu. The AI's guess is represented as a probability with the use of a SoftMax function applied to the output layer.
+To create the neural network, NumPy and base Python are used. The Network is modelled as a class which contains layers, which are themselves instances of the class Layer. Each layer initially stores an array of weights and biases from the previous layer to the current layer. During the feed-forward process, the incoming activation/input values, as well as the output activation values and z-values (pre-activation) are also stored in each layer as NumPy arrays. To avoid overflow errors and extremely large activation values which arise from the huge input size, the Sigmoid activation function is chosen over ReLu. 
 
 ## Gathering of Data
 

@@ -3,8 +3,6 @@ from NN import *
 from pickle_initialiser import *
 from utils import *
 
-
-
 network = Network(ROWS * COLS, ROWS * COLS // 4, 100, 50, 4)
 pictures = getfile()
 
@@ -19,7 +17,7 @@ network.mass_train(list(gridlist_shuffled), list(expected_shuffled), LEARNRATE)
 ######
 ######
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("DRAWER")
+pygame.display.set_caption("DRAWER TOOL")
 
 
 def init_grid(rows, cols, colour):
@@ -56,10 +54,8 @@ grid = init_grid(ROWS, COLS, BG_COLOUR)
 drawing_colour = DARK
 exit_via_1 = False
 
-while run:
-    
+while run: 
     clock.tick(FPS)
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
@@ -111,10 +107,10 @@ if exit_via_1:
 
     print(f"Oh! This is a {SHAPES[feed.index(max(feed))]}!")
     print(f"""
-    {SHAPES[0]} - {round(np.exp(feed[0])/sum(np.exp(feed)) * 100, 2)}%
-    {SHAPES[1]} - {round(np.exp(feed[1])/sum(np.exp(feed)) * 100, 2)}%
-    {SHAPES[2]} - {round(np.exp(feed[2])/sum(np.exp(feed)) * 100, 2)}%
-    {SHAPES[3]} - {round(np.exp(feed[3])/sum(np.exp(feed)) * 100, 2)}%
+    {SHAPES[0]} - {round(feed[0]/sum(feed) * 100, 2)}%
+    {SHAPES[1]} - {round(feed[1]/sum(feed) * 100, 2)}%
+    {SHAPES[2]} - {round(feed[2]/sum(feed) * 100, 2)}%
+    {SHAPES[3]} - {round(feed[3]/sum(feed) * 100, 2)}%
     """)
     correct = input("Was I right? (Y/N) ")
 

@@ -12,8 +12,6 @@ class Layer:
         self.out_a = np.array([])
    
 
-       
-
     def feed_forward(self, inputs): 
         self.z_values = self.weights.dot(inputs) + self.biases
         self.out_a = ACTIVATION(self.z_values)
@@ -70,10 +68,9 @@ class Network:
         x = []
         fig, ax = pt.subplots()
         fig.suptitle("Error Rate")
-        ax.set(xlabel = "Number of Inputs", ylabel = "Error-Rate")
+        ax.set_xlabel("Number of Inputs")
+        ax.set_ylabel("Error-Rate")
         
-            
-            
             
         for i in range(len(datapoints)):
                 #### TRAINING ####
@@ -83,8 +80,7 @@ class Network:
             x.append(i + 1)
                 ##################
 
-            ax.set_xlabel("Number of Inputs")
-            ax.set_ylabel("Error-Rate")
+            
             
             pt.cla()
             ax.plot(x, deviation_list)
@@ -92,11 +88,6 @@ class Network:
             fig.canvas.draw()
                 
             pt.pause(0.00001)
-        
-        
-       
-        
-        
         
         pt.pause(1)
         pt.close()
