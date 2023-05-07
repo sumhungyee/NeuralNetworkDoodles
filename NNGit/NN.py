@@ -1,5 +1,5 @@
 from utils import *
-
+from statistics import mean
 class Layer:
     def __init__(self, num_nodes_in, num_nodes_out, weight_rng):
         self.num_nodes_in = num_nodes_in
@@ -35,9 +35,13 @@ class Network:
             i in range(len(self.layer_sizes) - 1)]
         self.output_layer = self.layers[-1]
 
-    def cost_derivative(self, output_value, expected_value):
+    def mse_derivative(self, output_value, expected_value):
         return (expected_value - output_value) 
     
+    def mse(self, output_value, expected_value):
+        diff = 0.5 * (output_value - expected_value) ** 2
+        return sum(diff)
+
     def forward_prop(self, input):
            
         for layer in self.layers:
@@ -46,35 +50,43 @@ class Network:
             
         return input
 
-    def train(self, data, expected_outputs, learn_rate): 
-        data = np.array(data)
-        expected_outputs = np.array(expected_outputs)
-        outputs = self.forward_prop(data)
- 
-        error = self.cost_derivative(outputs, expected_outputs) 
-        err = sum(list(error))
-        for l in range(1, len(self.layer_sizes)):
-            layer = self.layers[-l]
-            change_biases = learn_rate * error * ACTIVATION_DERIVATIVE(layer.out_a) 
-            change_weights = layer.in_a[np.newaxis].T.dot(change_biases[np.newaxis])     
-            error = layer.weights.T.dot(error)
-            layer.weights += change_weights.T 
-            layer.biases += change_biases 
-        return err
+    def train(self, batch, expected_outputs_batch, learn_rate): 
+        batch = np.array(batch)
+        expected_outputs = np.array(expected_outputs_batch)
 
-    def mass_train(self, datapoints, expected, learn_rate):
+        loss = 0
+        batch_size = len(expected_outputs_batch)
+        for i in range(batch_size):
+            data = batch[i]
+            expected_outputs = expected_outputs_batch[i]
+            
+        
+            outputs = self.forward_prop(data)
+ 
+            error = self.mse_derivative(outputs, expected_outputs) 
+            loss += self.mse(outputs, expected_outputs) / batch_size
+            for l in range(1, len(self.layer_sizes)):
+                layer = self.layers[-l]
+                change_biases = learn_rate * error * ACTIVATION_DERIVATIVE(layer.out_a) 
+                change_weights = layer.in_a[np.newaxis].T.dot(change_biases[np.newaxis])     
+                error = layer.weights.T.dot(error)
+                layer.weights += change_weights.T / batch_size
+                layer.biases += change_biases / batch_size
+        return loss
+
+    def mass_train(self, datapoints, expected, learn_rate, batch_size):
         pt.style.use('ggplot')
         deviation_list = []
         x = []
         fig, ax = pt.subplots()
         fig.suptitle("Error Rate")
         ax.set_xlabel("Number of Inputs")
-        ax.set_ylabel("Error-Rate")
+        ax.set_ylabel("Loss")
         
             
-        for i in range(len(datapoints)):
+        for i in range(len(datapoints) // batch_size + 1):
                 #### TRAINING ####
-            deviation_list.append(self.train(datapoints[i], expected[i], learn_rate))
+            deviation_list.append(self.train(datapoints[i*batch_size:(i+1)*batch_size ], expected[i*batch_size:(i+1)*batch_size], learn_rate))
                 ##################
                 #### DATA ########
             x.append(i + 1)

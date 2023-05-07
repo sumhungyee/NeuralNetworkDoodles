@@ -12,7 +12,7 @@ pairs = list(zip(gridlist, expected))
 shuffle(pairs)
 gridlist_shuffled, expected_shuffled = zip(*pairs)
 
-network.mass_train(list(gridlist_shuffled), list(expected_shuffled), LEARNRATE)
+network.mass_train(list(gridlist_shuffled), list(expected_shuffled), LEARNRATE, BATCH_SIZE)
 
 ######
 ######
