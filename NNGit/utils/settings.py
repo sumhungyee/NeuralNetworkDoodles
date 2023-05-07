@@ -34,6 +34,7 @@ def  get_font(size):
 ACTIVATION = np.vectorize(lambda x : 1/(1 + np.exp(-x)))
 ACTIVATION_DERIVATIVE = np.vectorize(lambda x: ACTIVATION(x) * (1-ACTIVATION(x)))
 BATCH_SIZE = 8
+EPOCHS = 5
 WEIGHT_RNG = lambda: uniform(-0.5, 0.5)
 # currently 4 output nodes
 

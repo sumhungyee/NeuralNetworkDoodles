@@ -11,8 +11,8 @@ expected = list(map(lambda pic: EXPECTED[CONVERSION[pic.classification]], pictur
 pairs = list(zip(gridlist, expected))
 shuffle(pairs)
 gridlist_shuffled, expected_shuffled = zip(*pairs)
-
-network.mass_train(list(gridlist_shuffled), list(expected_shuffled), LEARNRATE, BATCH_SIZE)
+for i in range(EPOCHS):
+    network.mass_train(list(gridlist_shuffled), list(expected_shuffled), LEARNRATE, BATCH_SIZE)
 
 ######
 ######
